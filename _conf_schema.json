@@ -1,0 +1,56 @@
+{
+  "check_interval": {
+    "description": "监控检查间隔（秒）",
+    "type": "int",
+    "hint": "设置监控UP主直播状态的检查间隔，建议30-300秒。检测到B站限流时会自动临时放大间隔。",
+    "default": 60
+  },
+  "stagger_interval": {
+    "description": "多会话错峰推送间隔（秒）",
+    "type": "int",
+    "hint": "同一个UP主被多个群订阅时，开播/关播通知按此间隔依次推送，避免瞬间刷屏。0 表示不延迟。",
+    "default": 15
+  },
+  "max_monitors": {
+    "description": "最大监控UP主数量（每个会话）",
+    "type": "int",
+    "hint": "限制每个会话同时监控的UP主数量，避免API请求过于频繁",
+    "default": 50
+  },
+  "enable_notifications": {
+    "description": "是否启用开播通知",
+    "type": "bool",
+    "hint": "开启后会在UP主开播时发送通知消息",
+    "default": true
+  },
+  "enable_end_notifications": {
+    "description": "是否启用关播通知",
+    "type": "bool",
+    "hint": "开启后会在UP主结束直播时发送通知消息",
+    "default": true
+  },
+  "bilibili_cookie": {
+    "description": "B站Cookie（可选）",
+    "type": "string",
+    "hint": "填入B站登录Cookie可获得更高的API请求限额，减少被限流的概率。留空则使用匿名请求。管理员也可私聊Bot发送 更新cookie 扫码自动填写。",
+    "default": ""
+  },
+  "admin_umo": {
+    "description": "管理员会话ID（自动维护）",
+    "type": "string",
+    "hint": "管理员首次私聊Bot后自动记录，用于Cookie失效时推送提醒，一般无需手动修改。",
+    "default": ""
+  },
+  "live_notify_template": {
+    "description": "开播通知模板",
+    "type": "string",
+    "hint": "支持占位符: {uname} UP主名称, {title} 直播标题, {room_id} 直播间号。封面图会自动附带。换行可直接回车，也可输入字面 \\n。",
+    "default": "🔴 {uname} 开播啦！\n📺 直播标题: {title}\n🔗 直播间: https://live.bilibili.com/{room_id}"
+  },
+  "end_notify_template": {
+    "description": "关播通知模板",
+    "type": "string",
+    "hint": "支持占位符: {uname} UP主名称, {title} 直播标题, {room_id} 直播间号。换行可直接回车，也可输入字面 \\n。",
+    "default": "⚫ {uname} 已结束直播"
+  }
+}
